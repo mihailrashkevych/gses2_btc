@@ -48,12 +48,11 @@ namespace GSES2_BTC_Service.API.Controllers
         // "Mail": "reid.reinger16@ethereal.email"
         // "Password": "PRRDAPjAnmXmkXuhTf"
         [HttpPost("/sendEmails")]
-        //public async Task<IActionResult> SendEmails(string from = "BTC", string to = "UAH")
-        public async Task<IActionResult> SendEmails()
+        public async Task<IActionResult> SendEmails(string from = "BTC", string to = "UAH")
         {
             var message = new Message();
-            message.From = "BTC";
-            message.To = "UAH";
+            message.From = from;
+            message.To = to;
             message.ToSourceUrl = new UrlBuildHelper().BuildUrlForCoingate(_configuration["CoingateUrl"], message.From, message.To);
 
             var result = await _messageService.SendMessage(message);

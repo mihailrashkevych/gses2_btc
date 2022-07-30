@@ -23,11 +23,8 @@ namespace GSES2_BTC_Service.API.Controllers
         }
 
         [HttpGet("/rate")]
-        //public async Task<IActionResult> Get(string from = "BTC", string to = "UAH")
-        public async Task<IActionResult> Get()
+        public async Task<IActionResult> Get(string from = "BTC", string to = "UAH")
         {
-            string from = "BTC";
-            string to = "UAH";
             var result = await _exchangeRateService.GetExchangeRateAsync(
                 new UrlBuildHelper().BuildUrlForCoingate(_configuration["CoingateUrl"], from, to));
             if (!String.IsNullOrEmpty(result))
