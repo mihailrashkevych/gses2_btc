@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>d7f1b9b6-84bf-40a3-86f3-8848389ff4ba</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MailKit" Version="3.3.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.14.0" />
+    <PackageReference Include="MimeKit" Version="3.3.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CoingateProvider\CoingateProvider.csproj" />
+    <ProjectReference Include="..\FileDataStorage\FileDataStorage.csproj" />
+    <ProjectReference Include="..\GSES2_BTC.Core\GSES2_BTC.Core.csproj" />
+    <ProjectReference Include="..\SmtpGoogleProvider\SmtpGoogleProvider.csproj" />
+  </ItemGroup>
+
+</Project>
