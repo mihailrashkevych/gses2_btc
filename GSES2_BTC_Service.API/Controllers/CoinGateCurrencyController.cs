@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GSES2_BTC_Service.API.Controllers
 {
-    [Route("/api")]
+    [Route("")]
     [ApiController]
     public class CoinGateCurrencyController : ControllerBase
     {
@@ -22,9 +22,11 @@ namespace GSES2_BTC_Service.API.Controllers
             _logger = logger;
         }
 
-        [HttpGet("/rate")]
-        public async Task<IActionResult> Get(string from = "BTC", string to = "UAH")
+        [HttpGet("/api/rate")]
+        public async Task<IActionResult> Get()
         {
+            string from = "BTC";
+            string to = "UAH";
             var result = await _exchangeRateService.GetExchangeRateAsync(
                 new UrlBuildHelper().BuildUrlForCoingate(_configuration["CoingateUrl"], from, to));
             if (!String.IsNullOrEmpty(result))

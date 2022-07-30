@@ -6,7 +6,7 @@ using System.Text.RegularExpressions;
 
 namespace GSES2_BTC_Service.API.Controllers
 {
-    [Route("/api")]
+    [Route("")]
     [ApiController]
     public class EmailController : ControllerBase
     {
@@ -23,7 +23,7 @@ namespace GSES2_BTC_Service.API.Controllers
             _logger = logger;
         }
 
-        [HttpPost("/subscribe")]
+        [HttpPost("/api/subscribe")]
         public async Task<IActionResult> Subscribe([FromBody] string email)
         {
             string regex = @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z";
@@ -47,9 +47,11 @@ namespace GSES2_BTC_Service.API.Controllers
         // use for login data from appsettings
         // "Mail": "reid.reinger16@ethereal.email"
         // "Password": "PRRDAPjAnmXmkXuhTf"
-        [HttpPost("/sendEmails")]
-        public async Task<IActionResult> SendEmails(string from = "BTC", string to = "UAH")
+        [HttpPost("/api/sendEmails")]
+        public async Task<IActionResult> SendEmails()
         {
+            string from = "BTC";
+            string to = "UAH";
             var message = new Message();
             message.From = from;
             message.To = to;
